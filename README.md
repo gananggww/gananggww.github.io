@@ -25,3 +25,8 @@ Saya menggunakan syntax CSS seperti:
 About Me:
 ---
 Saya adalah siswa dari hactiv8 fase 0 yang dapat menggunakan HTML dan CSS :))
+
+Future Plans:
+---
+Harapan saya kedepannya dapat membuat website lebih responsive
+

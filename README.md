@@ -2,12 +2,26 @@ Hallo
 ===
 About This Site:
 ---
-Penjelasan singkat mengenai website kalian
+Ini adalah website pertama saya setelah belajar di hecktiv8 :)
 
 Used Tags & Syntaxes:
 ---
-Daftar tag HTML dan CSS yang kalian gunakan untuk membuat websit tersebut
+saya menggunakan syntax HTML seperti:
+1. class
+2. ID
+
+Saya menggunakan syntax CSS seperti:
+1. Background
+2. margin
+3. padding
+4. Border
+5. cursor
+6. font-family
+7. font-size
+8. color
+9. text-align
+10. dll
 
 About Me:
 ---
-Memperkenalkan diri kalian sebagaipemilik website
+Saya adalah siswa dari hactiv8 fase 0 yang dapat menggunakan HTML dan CSS :))

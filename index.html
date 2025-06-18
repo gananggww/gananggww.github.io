@@ -1,93 +1,610 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Ganang Wahyu Wicaksono</title>
-  <link href="style.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganang Wahyu Wicaksono - Software Engineer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .arcade-screen {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #000;
+            border: 8px solid #333;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 
+                0 0 20px rgba(255,255,255,0.1),
+                inset 0 0 20px rgba(255,255,255,0.05);
+        }
+        
+        .screen-border {
+            border: 2px solid #fff;
+            padding: 20px;
+            background: #000;
+        }
+        
+        .title-screen {
+            text-align: center;
+            margin-bottom: 30px;
+            border: 2px solid #fff;
+            padding: 15px;
+        }
+        
+        .game-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .credits {
+            font-size: 10px;
+            margin-top: 10px;
+        }
+        
+        .player-info {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .player-avatar {
+            text-align: center;
+            border: 2px solid #fff;
+            padding: 20px;
+        }
+        
+        .ascii-art {
+            font-family: monospace;
+            font-size: 8px;
+            line-height: 1;
+            margin-bottom: 15px;
+            white-space: pre;
+        }
+        
+        .player-stats {
+            border: 2px solid #fff;
+            padding: 15px;
+        }
+        
+        .stat-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            border: 2px solid #fff;
+            padding: 15px;
+        }
+        
+        .section-header {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding: 5px;
+            border: 1px solid #fff;
+            letter-spacing: 1px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .skill-box {
+            border: 1px solid #fff;
+            padding: 8px;
+            text-align: center;
+            font-size: 10px;
+        }
+        
+        .level-indicator {
+            margin-top: 3px;
+            font-size: 8px;
+        }
+        
+        .experience-block {
+            margin-bottom: 20px;
+            border: 1px solid #fff;
+            padding: 15px;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 5px;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .job-duration {
+            font-size: 10px;
+        }
+        
+        .company {
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .achievement {
+            font-size: 11px;
+            margin-bottom: 3px;
+            padding-left: 10px;
+        }
+        
+        .achievement:before {
+            content: "▸ ";
+        }
+        
+        .project-entry {
+            margin-bottom: 15px;
+            border: 1px solid #fff;
+            padding: 10px;
+        }
+        
+        .project-name {
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .project-tech {
+            font-size: 10px;
+            margin-bottom: 5px;
+            color: #ccc;
+        }
+        
+        .project-desc {
+            font-size: 11px;
+        }
+        
+        .contact-terminal {
+            background: #000;
+            border: 2px solid #fff;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 11px;
+        }
+        
+        .terminal-line {
+            margin-bottom: 3px;
+        }
+        
+        .prompt {
+            color: #fff;
+        }
+        
+        .blink {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .score-display {
+            text-align: center;
+            font-size: 12px;
+            margin: 20px 0;
+            border: 2px solid #fff;
+            padding: 10px;
+        }
+        
+        .high-score {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 12px;
+        }
+        
+        .education-box {
+            border: 1px solid #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .degree {
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .school {
+            font-size: 11px;
+            color: #ccc;
+        }
+        
+        @media print {
+            body {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header >
-
-      <div class="bgicon">
-        <div class="icon">
-          <a href="https://www.twitter.com/ganangwahyuw"> <img src="img/tweet.png"></a>
-          <a href="https://www.facebook.com/gananggww"> <img src="img/fb.png"></a>
-          <a href="https://www.instagram.com/gananggww"> <img src="img/ig.png"></a>
-          <a href="https://www.steamcommunity.com/id/gananggww"> <img src="img/steam.png"></a>
-          <h4>Ganang Wahyu Wicaksono</h4>
-      </div>
-      </div>
-        <div class="bgnav">
-            <ul class="navigation">
-              <a href="# "><li class="home">Home</li></a>
-              <a href="#"><li class="blog">Blog</li></a>
-              <a href="#"><li class="contact">About Me</li></a>
-            </ul>
-        </div>
-        <div class="headerdua">
-            <div class="text">
-              <img id="cover" src="img/header.png"/>
+    <div class="arcade-screen">
+        <div class="screen-border">
+            <div class="title-screen">
+                <div class="game-title">████████████████████████████</div>
+                <div class="game-title">█ SOFTWARE ENGINEER QUEST █</div>
+                <div class="game-title">████████████████████████████</div>
+                <div class="subtitle">STARRING: GANANG WAHYU WICAKSONO</div>
+                <div class="credits">© 2024 BACKEND STUDIOS</div>
             </div>
-          </div>
+
+            <div class="player-info">
+                <div class="player-avatar">
+                    <div class="ascii-art">    ████████
+   ██      ██
+  ██  ████  ██
+  ██  ████  ██
+   ██      ██
+    ████████
+      ████
+   ██████████
+  ████    ████
+ ████      ████</div>
+                    <div style="font-size: 12px; font-weight: bold;">PLAYER 1</div>
+                    <div style="font-size: 10px;">CLASS: BACKEND ENGINEER</div>
+                </div>
+                
+                <div class="player-stats">
+                    <div class="stat-line">
+                        <span>NAME:</span>
+                        <span>GANANG WAHYU WICAKSONO</span>
+                    </div>
+                    <div class="stat-line">
+                        <span>LOCATION:</span>
+                        <span>BANDUNG, INDONESIA</span>
+                    </div>
+                    <div class="stat-line">
+                        <span>EXPERIENCE:</span>
+                        <span>8+ YEARS</span>
+                    </div>
+                    <div class="stat-line">
+                        <span>SPECIALIZATION:</span>
+                        <span>BACKEND DEVELOPMENT</span>
+                    </div>
+                    <div class="stat-line">
+                        <span>CURRENT ROLE:</span>
+                        <span>PRINCIPAL ENGINEER</span>
+                    </div>
+                    <div class="stat-line">
+                        <span>COMPANY:</span>
+                        <span>BANK RAKYAT INDONESIA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="score-display">
+                <div class="high-score">HIGH SCORE: 999,999</div>
+                <div>ACHIEVEMENTS UNLOCKED: 15/20</div>
+                <div>PROJECTS COMPLETED: 50+</div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    ═══════ LANGUAGES & FRAMEWORKS ═══════
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-box">
+                        <div>GOLANG</div>
+                        <div class="level-indicator">██████████ LV.9</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>JAVASCRIPT</div>
+                        <div class="level-indicator">█████████░ LV.8</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>PYTHON</div>
+                        <div class="level-indicator">████████░░ LV.7</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>NODE.JS</div>
+                        <div class="level-indicator">█████████░ LV.8</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>REACT.JS</div>
+                        <div class="level-indicator">███████░░░ LV.6</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>VUE.JS</div>
+                        <div class="level-indicator">██████░░░░ LV.5</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>NEXT.JS</div>
+                        <div class="level-indicator">██████░░░░ LV.5</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>FLASK/DJANGO</div>
+                        <div class="level-indicator">███████░░░ LV.6</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>EXPRESS.JS</div>
+                        <div class="level-indicator">████████░░ LV.7</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>BEEGO</div>
+                        <div class="level-indicator">███████░░░ LV.6</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>REST API</div>
+                        <div class="level-indicator">██████████ LV.9</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>GRPC</div>
+                        <div class="level-indicator">████████░░ LV.7</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    ═══════ INFRASTRUCTURE & TOOLS ═══════
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-box">
+                        <div>DOCKER</div>
+                        <div class="level-indicator">█████████░ LV.8</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>KUBERNETES</div>
+                        <div class="level-indicator">████████░░ LV.7</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>OPENSHIFT</div>
+                        <div class="level-indicator">██████░░░░ LV.5</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>POSTGRESQL</div>
+                        <div class="level-indicator">████████░░ LV.7</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>MYSQL</div>
+                        <div class="level-indicator">███████░░░ LV.6</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>REDIS</div>
+                        <div class="level-indicator">███████░░░ LV.6</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>MONGODB</div>
+                        <div class="level-indicator">██████░░░░ LV.5</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>POSTGIS</div>
+                        <div class="level-indicator">█████░░░░░ LV.4</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>KAFKA</div>
+                        <div class="level-indicator">██████░░░░ LV.5</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>RABBITMQ</div>
+                        <div class="level-indicator">█████░░░░░ LV.4</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>REDIS STREAM</div>
+                        <div class="level-indicator">█████░░░░░ LV.4</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>ELASTICSEARCH</div>
+                        <div class="level-indicator">██████░░░░ LV.5</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>FLUENTD</div>
+                        <div class="level-indicator">█████░░░░░ LV.4</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>KIBANA</div>
+                        <div class="level-indicator">█████░░░░░ LV.4</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>APM</div>
+                        <div class="level-indicator">█████░░░░░ LV.4</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>PROMETHEUS</div>
+                        <div class="level-indicator">██████░░░░ LV.5</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>GRAFANA</div>
+                        <div class="level-indicator">██████░░░░ LV.5</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>JENKINS</div>
+                        <div class="level-indicator">███████░░░ LV.6</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>BAMBOO</div>
+                        <div class="level-indicator">██████░░░░ LV.5</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>GIT</div>
+                        <div class="level-indicator">█████████░ LV.8</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>LINUX/UBUNTU</div>
+                        <div class="level-indicator">████████░░ LV.7</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>KONG GATEWAY</div>
+                        <div class="level-indicator">██████░░░░ LV.5</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>OAUTH2/JWT</div>
+                        <div class="level-indicator">███████░░░ LV.6</div>
+                    </div>
+                    <div class="skill-box">
+                        <div>HSM</div>
+                        <div class="level-indicator">█████░░░░░ LV.4</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider">
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    ═══════ QUEST LOG ═══════
+                </div>
+                
+                <div class="experience-block">
+                    <div class="job-header">
+                        <div class="job-title">PRINCIPAL SOFTWARE ENGINEER</div>
+                        <div class="job-duration">JAN 2023 - PRESENT</div>
+                    </div>
+                    <div class="company">BANK RAKYAT INDONESIA - BRILINK TEAM</div>
+                    <div class="achievement">Designed and implemented high-availability microservices architecture</div>
+                    <div class="achievement">Led re-engineering initiatives migrating monolith to microservices</div>
+                    <div class="achievement">Created development standards and best practices for microservices</div>
+                    <div class="achievement">Migrated core features to Golang microservices ecosystem</div>
+                </div>
+
+                <div class="experience-block">
+                    <div class="job-header">
+                        <div class="job-title">BACKEND SOFTWARE ENGINEER</div>
+                        <div class="job-duration">AUG 2020 - DEC 2022</div>
+                    </div>
+                    <div class="company">BANK RAKYAT INDONESIA - BRILINK TEAM</div>
+                    <div class="achievement">Researched and implemented HA microservices architecture solutions</div>
+                    <div class="achievement">Improved system performance by 300% through microservices optimization</div>
+                    <div class="achievement">Established development standards for distributed systems</div>
+                    <div class="achievement">Led team in adopting modern backend and microservices technologies</div>
+                </div>
+
+                <div class="experience-block">
+                    <div class="job-header">
+                        <div class="job-title">BACKEND ENGINEER</div>
+                        <div class="job-duration">2 YEARS 2 MONTHS</div>
+                    </div>
+                    <div class="company">XWORK</div>
+                    <div class="achievement">Built microservices using Golang Beego framework</div>
+                    <div class="achievement">Developed internal dashboards with Python Django</div>
+                    <div class="achievement">Integrated React.js for seamless frontend experience</div>
+                    <div class="achievement">Scaled tempat.com platform infrastructure</div>
+                </div>
+
+                <div class="experience-block">
+                    <div class="job-header">
+                        <div class="job-title">REACT & DATA SCIENCE INSTRUCTOR</div>
+                        <div class="job-duration">1 YEAR</div>
+                    </div>
+                    <div class="company">HACKTIV8</div>
+                    <div class="achievement">Taught React and React Native in night classes</div>
+                    <div class="achievement">Conducted Python for Data Science training sessions</div>
+                    <div class="achievement">Mentored 100+ students in fullstack development</div>
+                </div>
+            </div>
+
+            <div class="divider">
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    ═══════ BONUS STAGES ═══════
+                </div>
+                
+                <div class="project-entry">
+                    <div class="project-name">GUDANG GARAM GAME EVENT APP</div>
+                    <div class="project-tech">TECH: Node.js Express, MySQL</div>
+                    <div class="project-desc">Developed backend for mobile game with lucky roll mechanics and reward system. Built dashboard for goods management and administration.</div>
+                </div>
+
+                <div class="project-entry">
+                    <div class="project-name">BIZTRIPS DASHBOARD</div>
+                    <div class="project-tech">TECH: Nuxt.js, Vue.js</div>
+                    <div class="project-desc">Created internal dashboard for business trip management and operations. Streamlined company travel processes.</div>
+                </div>
+
+                <div class="project-entry">
+                    <div class="project-name">SAMPINGAN PLATFORM</div>
+                    <div class="project-tech">TECH: Next.js, React</div>
+                    <div class="project-desc">Built comprehensive freelancer and recruiting management system. Complete dashboard solution for talent marketplace.</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    ═══════ EDUCATION ═══════
+                </div>
+                
+                <div class="education-box">
+                    <div class="degree">BACHELOR'S DEGREE - COMPUTER ENGINEERING</div>
+                    <div class="school">Telkom University, Bandung, Indonesia</div>
+                </div>
+
+                <div class="education-box">
+                    <div class="degree">FULLSTACK JAVASCRIPT BOOTCAMP</div>
+                    <div class="school">Hacktiv8 Immersive Program</div>
+                </div>
+            </div>
+
+            <div class="contact-terminal">
+                <div class="terminal-line">
+                    <span class="prompt">$ whoami</span>
+                </div>
+                <div class="terminal-line">ganang@developer:~$ gananggww@gmail.com</div>
+                <div class="terminal-line">
+                    <span class="prompt">$ cat contact.txt</span>
+                </div>
+                <div class="terminal-line">📱 +62-853-7228-1600</div>
+                <div class="terminal-line">🌐 github.com/gananggww</div>
+                <div class="terminal-line">💼 linkedin.com/in/ganang-wahyu-wicaksono-3b7a53129/</div>
+                <div class="terminal-line">
+                    <span class="prompt">$ _</span><span class="blink">█</span>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px; font-size: 12px;">
+                ═══════════════════════════════════════════<br>
+                PRESS ANY KEY TO CONTINUE<br>
+                ═══════════════════════════════════════════
+            </div>
         </div>
-
-  </header>
-
-
-  <content>
-    <div class="frame">
-      <h3>Expertness</h3>
-        <div class="box-1">
-          <h4>Graphic Design</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi u
-            t aliquip ex ea commodo consequat.
-            </>
-        </div>
-        <div class="box-1">
-          <h4>HTML/CSS</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi u
-            t aliquip ex ea commodo consequat.
-          </p>
-        </div>
     </div>
-
-    <div class="frame">
-      <h3>Timeline</h3>
-    </div>
-
-
-  </content>
-
-  <footer>
-    <div class="info">
-      <div class="me">
-      <h3>Terima Kasih Telah Berkunjung</h3>
-
-      </div>
-      <div class="kontak">
-        <h3> Contact Me</h3>
-          <p>
-            gananggww@gmail.com
-            <br>+6285372281600
-          </p>
-      </div>
-    </div>
-    <div class="sosmed">
-      <h3>Follow Me:</h3>
-      <a href="https://www.twitter.com/ganangwahyuw"> <img src="img/tweet.png"></a>
-      <a href="https://www.facebook.com/gananggww"> <img src="img/fb.png"></a>
-      <a href="https://www.instagram.com/gananggww"> <img src="img/ig.png"></a>
-      <a href="https://www.steamcommunity.com/id/gananggww"> <img src="img/steam.png"></a>
-    </div>
-    <div class="lisensi">
-      <h5> @Copyright 2017 gacktiv8student.gananggww</h5>
-    </div>
-  </footer>
 </body>
 </html>
